@@ -339,6 +339,15 @@
             </div>
         </form>
     </section>
+    <div class="newsletter-container">
+        <h2>Subscribe to Our Newsletter</h2>
+        <form action="https://formspree.io/f/xpwqewoj" method="POST">
+            <label for="email">Your Email:</label>
+            <input type="email" name="email" id="email" placeholder="Enter your email" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </div>
+    
     <section class="faq" id="faq">
         <h2 class="heading">Frequently Asked <span>Questions</span></h2>
 
@@ -637,6 +646,79 @@
         display: flex;
     }
 }
+
+
+
+.newsletter-container {
+    background: rgba(0, 0, 0, 0.9);
+    padding: 40px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 0 20px var(--main-color);
+    border: 2px solid var(--main-color);
+    max-width: 500px;
+    margin: 50px auto;
+}
+
+.newsletter-container h2 {
+    font-size: 2rem;
+    color: #fff;
+    text-shadow: 0 0 10px var(--main-color);
+}
+
+.newsletter-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.newsletter-container label {
+    font-size: 1.2rem;
+    color: #ccc;
+}
+
+.newsletter-container input {
+    width: 80%;
+    padding: 12px;
+    font-size: 1rem;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid var(--main-color);
+    border-radius: 5px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.newsletter-container input::placeholder {
+    color: #888;
+}
+
+.newsletter-container input:focus {
+    border-color: #fff;
+    box-shadow: 0 0 10px var(--main-color);
+}
+
+.newsletter-container button {
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    background: var(--main-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 0 10px var(--main-color);
+}
+
+.newsletter-container button:hover {
+    background: #fff;
+    color: var(--main-color);
+    box-shadow: 0 0 20px var(--main-color);
+}
+
 </style>
 <script>
     document.querySelectorAll(".faq-question").forEach(button => {
@@ -685,5 +767,27 @@ document.querySelectorAll(".stars").forEach(starContainer => {
     }
 });
 
+
+
+document.getElementById("newsletter-form").addEventListener("submit", async function (event) {
+        event.preventDefault(); // Prevent default form submission
+
+        let email = document.getElementById("email").value;
+        let message = document.getElementById("message");
+
+        let response = await fetch("https://formspree.io/f/xpwqewoj", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email: email })
+        });
+
+        if (response.ok) {
+            message.textContent = "✅ Subscription successful!";
+            message.style.color = "green";
+        } else {
+            message.textContent = "❌ Error! Please try again.";
+            message.style.color = "red";
+        }
+    });
 </script>
 </html>
