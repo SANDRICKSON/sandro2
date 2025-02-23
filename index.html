@@ -704,7 +704,7 @@
     padding: 12px 25px;
     font-size: 1.2rem;
     font-weight: bold;
-    color: #fff;
+    color: black;
     background: var(--main-color);
     border: none;
     border-radius: 5px;
@@ -715,10 +715,16 @@
 
 .newsletter-container button:hover {
     background: #fff;
-    color: var(--main-color);
+    color: black;
     box-shadow: 0 0 20px var(--main-color);
 }
 
+
+@media (max-width: 768px) {
+    .services-container {
+        grid-template-columns: 1fr;
+    }
+}
 </style>
 <script>
     document.querySelectorAll(".faq-question").forEach(button => {
