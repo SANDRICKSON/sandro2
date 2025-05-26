@@ -5,7 +5,7 @@ const successMessage = document.getElementById("success-message"); // ელე�
 form.addEventListener('submit', async (e) => {
     e.preventDefault(); // ფორმის სტანდარტული გაგზავნის თავიდან აცილება
     const formData = new FormData(form); // მონაცემების შეგროვება
-    
+
     try {
         let response = await fetch(scriptURL, { method: 'POST', body: formData });
         let text = await response.text(); // მიიღე response-ის ტექსტი
@@ -115,5 +115,30 @@ document.addEventListener("DOMContentLoaded", () => {
         const isLight = body.classList.contains("light-theme");
         toggleBtn.textContent = isLight ? "🌙" : "☀️";
         localStorage.setItem("theme", isLight ? "light" : "dark");
+    });
+});
+
+// ScrollSpy - აქტიური ლინკის გამოყოფა სკროლის მიხედვით
+document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".navbar a");
+
+    window.addEventListener("scroll", () => {
+        let current = "";
+
+        sections.forEach((section) => {
+            const sectionTop = section.offsetTop - 150;
+            const sectionHeight = section.offsetHeight;
+            if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                current = section.getAttribute("id");
+            }
+        });
+
+        navLinks.forEach((link) => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === `#${current}`) {
+                link.classList.add("active");
+            }
+        });
     });
 });
