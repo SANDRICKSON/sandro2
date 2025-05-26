@@ -96,3 +96,24 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("Menu toggled!", navbar.classList.contains("active"));
     });
 });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const toggleBtn = document.getElementById("theme-toggle");
+    const body = document.body;
+
+    // შეამოწმე, იყო თუ არა უკვე გადართული თემა
+    if (localStorage.getItem("theme") === "light") {
+        body.classList.add("light-theme");
+        toggleBtn.textContent = "🌙";
+    } else {
+        toggleBtn.textContent = "☀️";
+    }
+
+    toggleBtn.addEventListener("click", () => {
+        body.classList.toggle("light-theme");
+        const isLight = body.classList.contains("light-theme");
+        toggleBtn.textContent = isLight ? "🌙" : "☀️";
+        localStorage.setItem("theme", isLight ? "light" : "dark");
+    });
+});
