@@ -1272,8 +1272,9 @@ body.light-theme .services h2,
 body.light-theme .education h2,
 body.light-theme .education .timeline-date,
 body.light-theme .education .timeline-content h3,
-body.light-theme .education .timeline-content p
-
+body.light-theme .education .timeline-content p,
+body.light-theme .blog p
 {
     color: black;
 }
+
