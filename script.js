@@ -142,3 +142,33 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
+
+const images = [
+    "images/cropped_pijaki.png",
+    "images/kompiuteri.jpg",
+    "images/pijaki.jpg",
+    "images/sandrikela.jpg",
+    "images/cropped_image.png"
+];
+
+let currentIndex = 0;
+const galleryImage = document.getElementById("gallery-image");
+
+setInterval(() => {
+    // დაამატე ფეიდ-აუთი
+    galleryImage.classList.add("fade-out");
+
+    setTimeout(() => {
+        // სურათის შეცვლა და ფეიდ-ინით დაბრუნება
+        currentIndex = (currentIndex + 1) % images.length;
+        galleryImage.src = images[currentIndex];
+
+        galleryImage.classList.remove("fade-out");
+        galleryImage.classList.add("fade-in");
+
+        setTimeout(() => {
+            galleryImage.classList.remove("fade-in");
+        }, 500); // დრო უნდა ემთხვეოდეს CSS-ში მითითებულს
+    }, 500); // სანამ opacity 0 გახდება
+}, 3000); // 3 წამში ერთხელ სლაიდშოუ
