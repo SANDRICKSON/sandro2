@@ -150,7 +150,10 @@ const images = [
     "images/pijaki.jpg",
     "images/sandrikela.jpg",
     "images/roboti.jpg",
-    "images/cropped_image.png"
+    "images/cropped_image.png",
+
+    "images/skillwill_graduation.jpg",
+    "images/skillwill_certificate.jpg"
 ];
 
 let currentIndex = 0;
