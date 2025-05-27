@@ -145,10 +145,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 const images = [
-    "images/cropped_pijaki.png",
+
     "images/kompiuteri.jpg",
     "images/pijaki.jpg",
     "images/sandrikela.jpg",
+    "images/roboti.jpg",
     "images/cropped_image.png"
 ];
 
